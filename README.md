@@ -1,5 +1,5 @@
 # ChangeInterfaceBuilderColor
-一键修改 xib storyboard 控件颜色空间(colorSpace) 、色值 [简书](https://www.jianshu.com/p/1e405f9ca97a)
+一键修改 xib storyboard 控件颜色空间(colorSpace)  [链接](https://juejin.im/post/5b8cf3b2f265da435d6ef7ab)
 #### 使用：
 ![替换色值.gif](https://github.com/fabcz/ChangeInterfaceBuilderColor/blob/master/gif/changeColor.gif)
 ![替换颜色空间.gif](https://github.com/fabcz/ChangeInterfaceBuilderColor/blob/master/gif/changeColorSpace.gif)
