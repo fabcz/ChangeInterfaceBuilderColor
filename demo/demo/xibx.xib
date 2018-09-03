@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"></adaptation>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"></deployment>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"></plugIn>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"></capability>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"></capability>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"></placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"></placeholder>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="xibx">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="279"></rect>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"></autoresizingMask>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我是XIB红色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2l-Ot-FB0">
+                    <rect key="frame" x="139" y="53" width="96" height="21"></rect>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"></autoresizingMask>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"></fontDescription>
+                    <color key="textColor" red="1" green="1" blue="0.041410073637962341" alpha="1" colorSpace="custom" customColorSpace="sRGB"></color>
+                    <nil key="highlightedColor"></nil>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我是XIB粉色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CC-e9-2Wf">
+                    <rect key="frame" x="139" y="204" width="96" height="21"></rect>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"></autoresizingMask>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"></fontDescription>
+                    <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"></color>
+                    <nil key="highlightedColor"></nil>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"></color>
+            <nil key="simulatedTopBarMetrics"></nil>
+            <nil key="simulatedBottomBarMetrics"></nil>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"></freeformSimulatedSizeMetrics>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"></viewLayoutGuide>
+            <point key="canvasLocation" x="22.5" y="-85.5"></point>
+        </view>
+    </objects>
+</document>
