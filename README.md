@@ -1,5 +1,8 @@
 # ChangeInterfaceBuilderColor
-一键修改 xib storyboard 控件颜色空间(colorSpace) 、色值
+一键修改 xib storyboard 控件颜色空间(colorSpace) 、色值 [简书](https://www.jianshu.com/p/1e405f9ca97a)
+#### 使用：
+![替换色值.gif](https://github.com/fabcz/ChangeInterfaceBuilderColor/blob/master/gif/changeColor.gif)
+![替换颜色空间.gif](https://github.com/fabcz/ChangeInterfaceBuilderColor/blob/master/gif/changeColorSpace.gif)
 #### 原理：
 1. 分别记录修改前（matchColor）和修改后（modifyColor）的颜色模型， 以此匹配要改动的 modifyType（只改色值、只改颜色空间或二者都改）；
 2. 遍历导入路径下所有的 .xib 和 .storyboard 文件；
