@@ -7,7 +7,8 @@
 1. 分别记录修改前（matchColor）和修改后（modifyColor）的颜色模型， 以此匹配要改动的 modifyType（只改色值、只改颜色空间或二者都改）；
 2. 遍历导入路径下所有的 .xib 和 .storyboard 文件；
 3. 对每一个 .xib 和 .storyboard 文件进行 DOM 解析操作，找到所有 color 元素标签NSXMLElement 并展示存储；
-4. 点击替换时修改 color 元素标签内的 NSXMLNode 相对应的 node.name，源码有详细注释
+4. 点击替换时修改 color 元素标签内的 NSXMLNode 相对应的 name，源码有详细注释
+5. 解析方式参考至 [来源](https://juejin.im/post/5b8cf3b2f265da435d6ef7ab)
 ## 缘起：
 设计那边出了个缺省页的图然后还标注了按钮的色值，然后我这边也照常写了，但多次沟通后设计还是说那颜色看起来不对（我看都长得一样啊，设计自带像素眼？）
 ## 排查：
