@@ -126,14 +126,14 @@ typedef NS_ENUM(NSInteger, CCModifyType) {
     
     // 寻找 xib、SB 文件
     [self.matchColorModels removeAllObjects];
-    NSMutableArray<NSString *> *xibSBFilePath = @[].mutableCopy;
-    [self findXibOrStoryboardFile:self.importPathTextField.stringValue xibSBFilePaths:xibSBFilePath];
+    NSMutableArray<NSString *> *xibSBFilePaths = @[].mutableCopy;
+    [self findXibOrStoryboardFile:self.importPathTextField.stringValue xibSBFilePaths:xibSBFilePaths];
     
-    if (xibSBFilePath.count == 0 && xibSBFilePath.count == 0) {
+    if (!xibSBFilePaths.count) {
         NSLog(@"error = 该路径下没有xib/storyboard文件");
     } else {
         NSLog(@"\n要匹配的色值：%@\n改为以下色值：%@\n修改类型：%ld",self.matchColorModel,self.modifyColorModel,self.modifyType);
-        [self modifyFilePaths:xibSBFilePath];
+        [self modifyFilePaths:xibSBFilePaths];
         self.countLabel.stringValue = [NSString stringWithFormat:@"%ld",self.matchColorModels.count];
         [self.tableView reloadData];
     }
