@@ -111,10 +111,12 @@ typedef NS_ENUM(NSInteger, CCModifyType) {
     }
     
     if (beforeModel.colorSpace.length) {
-        if ([beforeModel.colorSpace isEqualToString:@"deviceRGB"] || [beforeModel.colorSpace isEqualToString:@"calibratedRGB"]) {
+        if ([beforeModel.colorSpace isEqualToString:@"deviceRGB"] ||
+            [beforeModel.colorSpace isEqualToString:@"calibratedRGB"] ||
+            [beforeModel.colorSpace isEqualToString:@"displayP3"]) {
             self.modifyType = self.modifyType == CCModifyTypeRGBA ? (CCModifyTypeRGBA | CCModifyTypeColorSpace) : CCModifyTypeColorSpace;
         } else {
-            NSAssert(nil, @"\ncolorSpace 只能从 deviceRGB、calibratedRGB 替换成 sRGB");
+            NSAssert(nil, @"\ncolorSpace 只能从 deviceRGB、calibratedRGB、displayP3 替换成 sRGB");
         }
     }
     
@@ -215,7 +217,12 @@ typedef NS_ENUM(NSInteger, CCModifyType) {
     NSIndexSet *indexSet = self.tableView.selectedRowIndexes;
     self.selectColorModels = [self.matchColorModels objectsAtIndexes:indexSet].copy;
     if (indexSet.count) {
-        self.selectTextView.string = self.selectColorModels[0].XMLDocument.description;
+        NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:self.selectColorModels[0].XMLDocument.description];
+        [attributeString setAttributes:@{
+                                         NSForegroundColorAttributeName : NSColor.redColor,
+                                         NSFontAttributeName            : [NSFont systemFontOfSize:24.f]
+                                         } range:[attributeString.string rangeOfString:self.matchColorModel.colorSpace]];
+        [self.selectTextView.textStorage appendAttributedString:attributeString];
         self.countLabel.stringValue = [NSString stringWithFormat:@"%ld of %ld",self.selectColorModels.count,self.matchColorModels.count];
     } else {
         self.selectTextView.string = @"";
@@ -290,7 +297,8 @@ typedef NS_ENUM(NSInteger, CCModifyType) {
                     fabsf((currentColor.greenValue - self.matchColorModel.greenValue)) < 0.003 &&
                     fabsf((currentColor.blueValue - self.matchColorModel.blueValue)) < 0.003 &&
                     fabsf((currentColor.alpha.floatValue - self.matchColorModel.alpha.floatValue)) < 0.003 &&
-                    [currentColor.colorSpace isEqualToString:self.matchColorModel.colorSpace]) {
+                    ([currentColor.colorSpace isEqualToString:self.matchColorModel.colorSpace] ||
+                    [currentColor.customColorSpace isEqualToString:self.matchColorModel.colorSpace])) {
                     // 修改元素
                     [self.matchColorModels addObject:currentColor];
                     [self.matchColorModelsFilePath setValue:currentColor forKey:filePath];
@@ -307,7 +315,8 @@ typedef NS_ENUM(NSInteger, CCModifyType) {
                 }
             } else if (self.modifyType & CCModifyTypeColorSpace) {
                 // 只更改颜色空间
-                if ([currentColor.colorSpace isEqualToString:self.matchColorModel.colorSpace]) {
+                if ([currentColor.colorSpace isEqualToString:self.matchColorModel.colorSpace] ||
+                    [currentColor.customColorSpace isEqualToString:self.matchColorModel.colorSpace]) {
                     // 修改元素
                     [self.matchColorModels addObject:currentColor];
                     [self.matchColorModelsFilePath setValue:currentColor forKey:filePath];
@@ -340,7 +349,7 @@ typedef NS_ENUM(NSInteger, CCModifyType) {
         } else if ([node.name isEqualToString:@"alpha"] && modifyType & CCModifyTypeRGBA) {
             node.stringValue = self.modifyColorModel.alpha.length ? self.modifyColorModel.alpha : node.stringValue;
         } else if ([node.name isEqualToString:@"colorSpace"] && modifyType & CCModifyTypeColorSpace) {
-            // deviceRGB calibratedRGB -> sRGB
+            // deviceRGB calibratedRGB displayP3 -> sRGB
             node.stringValue = @"custom";
             [subElement addAttribute:[NSXMLNode attributeWithName:@"customColorSpace" stringValue:@"sRGB"]];
         }
